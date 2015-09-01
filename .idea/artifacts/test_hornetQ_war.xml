@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="test-hornetQ:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="test-hornetQ.war">
+      <element id="artifact" artifact-name="test-hornetQ:war exploded" />
+    </root>
+  </artifact>
+</component>
