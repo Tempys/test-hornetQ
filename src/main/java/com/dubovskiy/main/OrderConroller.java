@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import javax.annotation.Resource;
 import javax.jms.*;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
@@ -12,7 +13,7 @@ import javax.ws.rs.core.Response;
 
 
 @Path("/postOrder")
-public class OrderSrvc {
+public class OrderConroller {
 
     private final Logger log = Logger.getLogger("terminal");
 
@@ -65,6 +66,12 @@ public class OrderSrvc {
             }
         }
         return Response.status(200).entity("Received XML").build();
+    }
+
+    @GET
+    public Response postOrder(){
+        log.debug("PostOrder receive");
+        return Response.ok().build();
     }
 
 }

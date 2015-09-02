@@ -4,24 +4,16 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-    <servlet>
-        <servlet-name>Resteasy</servlet-name>
-        <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>Resteasy</servlet-name>
-        <url-pattern>/resteasy/*</url-pattern>
-    </servlet-mapping>
-
+    <!-- Auto scan REST service -->
     <context-param>
-        <param-name>resteasy.resources</param-name>
-        <param-value>com.dubovskiy.main.OrderSrvc</param-value>
+        <param-name>resteasy.scan</param-name>
+        <param-value>true</param-value>
     </context-param>
 
+    <!-- this need same with resteasy servlet url-pattern -->
     <context-param>
         <param-name>resteasy.servlet.mapping.prefix</param-name>
-        <param-value>/resteasy</param-value>
+        <param-value>/</param-value>
     </context-param>
 
     <listener>
@@ -29,4 +21,17 @@
             org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap
         </listener-class>
     </listener>
+
+    <servlet>
+        <servlet-name>resteasy-servlet</servlet-name>
+        <servlet-class>
+            org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
+        </servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>resteasy-servlet</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+
 </web-app>
