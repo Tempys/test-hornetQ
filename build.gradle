@@ -34,7 +34,6 @@ repositories {
 
 dependencies {
 
-   /* compile 'org.apache.qpid:qpid-client:0.32'*/
 /*    providedRuntime group: 'org.jboss.spec', name: 'jboss-javaee-7.0', version: '1.0.0.Final'*/
     compile 'org.jboss.spec:jboss-javaee-7.0:1.0.3.Final'
 
