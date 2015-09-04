@@ -1,0 +1,60 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "gradle.plugin.com.github.nikit.cpp:wildflyPlugin:0.11"
+    }
+}
+
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'war'
+apply plugin: "com.github.nikit.cpp.wildflyPlugin"
+war {
+    archiveName 'test-hornetQ.war'
+}
+wildfly {
+  //  deploymentDestination = 'C:\\path\\to\\wildfly\\standalone\\deployments' // or '${WILDFLY_HOME}\\standalone\\deployments'
+    deploymentDestination = "E:\\Projects\\HornetQ"
+    addFirstLevelDependenciesToManifest = true // generate manifest and add firstLevel dependencies
+    printTree = false // print dependency tree for debug purposes
+}
+
+repositories {
+    mavenCentral()
+
+    maven {
+        url 'http://repository.jboss.org/nexus/content/groups/public'
+    }
+}
+
+dependencies {
+
+   /* compile 'org.apache.qpid:qpid-client:0.32'*/
+/*    providedRuntime group: 'org.jboss.spec', name: 'jboss-javaee-7.0', version: '1.0.0.Final'*/
+    compile 'org.jboss.spec:jboss-javaee-7.0:1.0.3.Final'
+
+    /*compile "org.jboss.spec.javax.ejb:jboss-ejb-api_3.2_spec"
+    compile "javax.enterprise:cdi-api"
+    compile "org.jboss.spec.javax.annotation:jboss-annotations-api_1.2_spec"
+    compile "org.jboss.spec.javax.servlet:jboss-servlet-api_3.1_spec"*/
+
+    /* resteasy */
+
+    compile  "org.jboss.resteasy:resteasy-jaxrs:3.0.6.Final"
+    compile "org.jboss.resteasy:resteasy-client:3.0.6.Final"
+    compile "org.jboss.resteasy:resteasy-jaxb-provider:3.0.6.Final"
+    compile  "org.jboss.resteasy:jaxrs-api"
+    compile  "org.jboss.resteasy:resteasy-multipart-provider:3.0.6.Final"
+    compile  "org.jboss.spec.javax.jms:jboss-jms-api_2.0_spec:1.0.0.Final"
+
+    compile "log4j:log4j:1.2.17"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}

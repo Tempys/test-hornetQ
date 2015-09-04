@@ -15,6 +15,7 @@ public class BookerController {
    BookerService bookerService;
 
    @GET
+   @Path("/save")
    public Response saveBooker(){
       log.debug("saveBooker request received");
       bookerService.bookSeat();
@@ -22,5 +23,11 @@ public class BookerController {
     return Response.ok().build();
    }
 
+   @GET
+   @Path("/get")
+   public Response getBookerData(){
 
+
+      return Response.ok().build();
+   }
 }

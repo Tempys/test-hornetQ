@@ -10,8 +10,14 @@ public class BookerService implements Serializable {
 
     @Inject
     private BookingQueueProducer bookingQueueProducer;
+    @Inject
+    private BookingQueueReceiver bookingQueueReceiver;
 
     public void bookSeat() {
         bookingQueueProducer.sendMessage("[JMS Message] User registered seat" + 1);
+    }
+
+    public String getBook(){
+       return "";
     }
 }
